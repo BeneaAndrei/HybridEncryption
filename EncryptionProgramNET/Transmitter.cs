@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace EncryptionProgramNET
 {
-    class Trasnmiter
+    class Transmitter
     {
         private RSAParameters privateKey;
         private RSAParameters publicKey;
@@ -17,9 +17,9 @@ namespace EncryptionProgramNET
         Aes cipher;
         RSACryptoServiceProvider rsa;
 
-        public Trasnmiter()
+        public Transmitter()
         {
-            // Create byte arrays to hold orignial
+            
 
 
             // Create a new isntance of the RSACryptoServiceProvider class
@@ -40,6 +40,7 @@ namespace EncryptionProgramNET
 
         }
 
+        #region Getters
         public RSAParameters GetPublicKey
         {
             get => publicKey;
@@ -65,10 +66,13 @@ namespace EncryptionProgramNET
             get => signedData.Length;
         }
 
+        #endregion
+
         public byte[] EncryptPackage(string message, RSAParameters reciverPublicKey)
         {
             try
             {
+                //Converts the message to bytes
                 byte[] originalData = ByteConverter.GetBytes(message); 
                
 
@@ -82,7 +86,8 @@ namespace EncryptionProgramNET
                 // Encrypt symetric the concatenated data of the original
                 // And the signed data
                 encrypredConcatData = EncryptCipher(cipher, concatOriginalDataAndSignedData);
-
+                
+                //Creates a new RSA service using the public key of the reciver
                 RSACryptoServiceProvider reciverRSA = new RSACryptoServiceProvider();
                 reciverRSA.ImportParameters(reciverPublicKey);
 
@@ -104,7 +109,7 @@ namespace EncryptionProgramNET
 
         }
 
-
+      
         private static byte[] HashAndSignBytes(byte[] DataToSign, RSAParameters Key)
         {
             try
@@ -112,7 +117,6 @@ namespace EncryptionProgramNET
                 // Create a new instance of RSACryptoServiceProvider using the
                 // key from RSAParameters.
                 RSACryptoServiceProvider RSAalg = new RSACryptoServiceProvider();
-
                 RSAalg.ImportParameters(Key);
 
                 // Hash and sign the data. Pass a new instance of SHA256
@@ -127,29 +131,38 @@ namespace EncryptionProgramNET
             }
         }
 
+        
         private byte[] ConcatArray(byte[] firstArray, byte[] secondArray)
         {
+            //Creates a new array using the length of the two arrays that were passed
             byte[] concatArray = new byte[firstArray.Length + secondArray.Length];
 
+            //Coppy the arrays in order to be concatenated
             firstArray.CopyTo(concatArray, 0);
             secondArray.CopyTo(concatArray, firstArray.Length);
 
+            //Return the concatenated array
             return concatArray;
         }
 
         private static Aes CreateCipher()
         {
+            //Generates a new symetric service
             Aes cipher = Aes.Create();
-
+            //setting padding
             cipher.Padding = PaddingMode.ISO10126;
+            //generate the symetrical key
             cipher.GenerateKey();
+            //generate the IV vector
             cipher.GenerateIV();
 
+            //returns the service
             return cipher;
         }
 
         private static byte[] EncryptCipher(Aes cipher, byte[] ConcatText)
         {
+            //Symetrical encrypts the message
             ICryptoTransform cryptTransform = cipher.CreateEncryptor();
             return cryptTransform.TransformFinalBlock(ConcatText, 0, ConcatText.Length);
 

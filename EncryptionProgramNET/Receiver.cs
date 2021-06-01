@@ -6,13 +6,13 @@ using System.Security.Cryptography;
 
 namespace EncryptionProgramNET
 {
-    class Reciver
+    class Receiver
     {
         private RSACryptoServiceProvider rsa;
         RSAParameters publicKey;
  
 
-        public Reciver()
+        public Receiver()
         {
 
             // Create a new isntance of the RSACryptoServiceProvider class
