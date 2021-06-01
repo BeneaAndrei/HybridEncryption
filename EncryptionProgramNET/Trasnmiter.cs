@@ -11,16 +11,16 @@ namespace EncryptionProgramNET
     {
         private RSAParameters privateKey;
         private RSAParameters publicKey;
-        private RSAParameters reciverPublicKey;
-        private byte[] originalData;
+        private byte[] encrypredConcatData;
+        private byte[] signedData;
         private ASCIIEncoding ByteConverter = new ASCIIEncoding();
         Aes cipher;
         RSACryptoServiceProvider rsa;
 
-        public Trasnmiter(string originalData, RSAParameters reciverPublicKey)
+        public Trasnmiter()
         {
             // Create byte arrays to hold orignial
-            this.originalData = ByteConverter.GetBytes(originalData);
+
 
             // Create a new isntance of the RSACryptoServiceProvider class
             // And automatically create a new key-pair.
@@ -38,9 +38,6 @@ namespace EncryptionProgramNET
             // Create a new isntance of a Symetric Encryption system
             cipher = CreateCipher();
 
-            this.reciverPublicKey = reciverPublicKey;
-
-
         }
 
         public RSAParameters GetPublicKey
@@ -53,11 +50,27 @@ namespace EncryptionProgramNET
             get => privateKey;
         }
 
-        private void EncryptPackage()
+        public byte[] GetVIVector
+        {
+            get => cipher.IV;
+        }
+
+        public int GetEncryptDataLength
+        {
+            get => encrypredConcatData.Length;
+        }
+
+        public int GetSignedDataLength
+        {
+            get => signedData.Length;
+        }
+
+        public byte[] EncryptPackage(string message, RSAParameters reciverPublicKey)
         {
             try
             {
-                byte[] signedData;
+                byte[] originalData = ByteConverter.GetBytes(message); 
+               
 
                 //Hash and singned the data
                 signedData = HashAndSignBytes(originalData, privateKey);
@@ -68,7 +81,7 @@ namespace EncryptionProgramNET
 
                 // Encrypt symetric the concatenated data of the original
                 // And the signed data
-                byte[] encrypredConcatData = EncryptCipher(cipher, concatOriginalDataAndSignedData);
+                encrypredConcatData = EncryptCipher(cipher, concatOriginalDataAndSignedData);
 
                 RSACryptoServiceProvider reciverRSA = new RSACryptoServiceProvider();
                 reciverRSA.ImportParameters(reciverPublicKey);
@@ -77,16 +90,16 @@ namespace EncryptionProgramNET
                 byte[] encryptedSymetricKey = reciverRSA.Encrypt(cipher.Key, true);
 
                 //Concatenates symetric key and concatenated data
-                byte[] concatKeyAndData = new byte[encrypredConcatData.Length + encryptedSymetricKey.Length];
+                byte[] concatKeyAndData = ConcatArray(encrypredConcatData, encryptedSymetricKey);
 
-                encrypredConcatData.CopyTo(concatKeyAndData, 0);
-                encryptedSymetricKey.CopyTo(concatKeyAndData, encrypredConcatData.Length);
+                return concatKeyAndData;
 
 
             }
             catch (ArgumentNullException)
             {
                 Console.WriteLine("The data was not signed or verified");
+                return null;
             }
 
         }
@@ -141,11 +154,6 @@ namespace EncryptionProgramNET
             return cryptTransform.TransformFinalBlock(ConcatText, 0, ConcatText.Length);
 
         }
-
-
-
-
-
 
     }
 }

@@ -1,24 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TSG\\Carduri\\EncryptionProgramNET\\EncryptionProgramNET\\EncryptionProgramNET.csproj": {}
+    "D:\\TSG\\HybridEncryption\\EncryptionProgramNET\\EncryptionProgramNET.csproj": {}
   },
   "projects": {
-    "D:\\TSG\\Carduri\\EncryptionProgramNET\\EncryptionProgramNET\\EncryptionProgramNET.csproj": {
+    "D:\\TSG\\HybridEncryption\\EncryptionProgramNET\\EncryptionProgramNET.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TSG\\Carduri\\EncryptionProgramNET\\EncryptionProgramNET\\EncryptionProgramNET.csproj",
+        "projectUniqueName": "D:\\TSG\\HybridEncryption\\EncryptionProgramNET\\EncryptionProgramNET.csproj",
         "projectName": "EncryptionProgramNET",
-        "projectPath": "D:\\TSG\\Carduri\\EncryptionProgramNET\\EncryptionProgramNET\\EncryptionProgramNET.csproj",
-        "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "D:\\TSG\\Carduri\\EncryptionProgramNET\\EncryptionProgramNET\\obj\\",
+        "projectPath": "D:\\TSG\\HybridEncryption\\EncryptionProgramNET\\EncryptionProgramNET.csproj",
+        "packagesPath": "C:\\Users\\Beni\\.nuget\\packages\\",
+        "outputPath": "D:\\TSG\\HybridEncryption\\EncryptionProgramNET\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Beni\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -60,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

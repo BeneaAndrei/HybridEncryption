@@ -11,3 +11,16 @@ D:\TSG\Carduri\EncryptionProgramNET\EncryptionProgramNET\obj\Debug\netcoreapp3.1
 D:\TSG\Carduri\EncryptionProgramNET\EncryptionProgramNET\obj\Debug\netcoreapp3.1\EncryptionProgramNET.dll
 D:\TSG\Carduri\EncryptionProgramNET\EncryptionProgramNET\obj\Debug\netcoreapp3.1\EncryptionProgramNET.pdb
 D:\TSG\Carduri\EncryptionProgramNET\EncryptionProgramNET\obj\Debug\netcoreapp3.1\EncryptionProgramNET.genruntimeconfig.cache
+D:\TSG\HybridEncryption\EncryptionProgramNET\bin\Debug\netcoreapp3.1\EncryptionProgramNET.exe
+D:\TSG\HybridEncryption\EncryptionProgramNET\bin\Debug\netcoreapp3.1\EncryptionProgramNET.deps.json
+D:\TSG\HybridEncryption\EncryptionProgramNET\bin\Debug\netcoreapp3.1\EncryptionProgramNET.runtimeconfig.json
+D:\TSG\HybridEncryption\EncryptionProgramNET\bin\Debug\netcoreapp3.1\EncryptionProgramNET.runtimeconfig.dev.json
+D:\TSG\HybridEncryption\EncryptionProgramNET\bin\Debug\netcoreapp3.1\EncryptionProgramNET.dll
+D:\TSG\HybridEncryption\EncryptionProgramNET\bin\Debug\netcoreapp3.1\EncryptionProgramNET.pdb
+D:\TSG\HybridEncryption\EncryptionProgramNET\obj\Debug\netcoreapp3.1\EncryptionProgramNET.csprojAssemblyReference.cache
+D:\TSG\HybridEncryption\EncryptionProgramNET\obj\Debug\netcoreapp3.1\EncryptionProgramNET.AssemblyInfoInputs.cache
+D:\TSG\HybridEncryption\EncryptionProgramNET\obj\Debug\netcoreapp3.1\EncryptionProgramNET.AssemblyInfo.cs
+D:\TSG\HybridEncryption\EncryptionProgramNET\obj\Debug\netcoreapp3.1\EncryptionProgramNET.csproj.CoreCompileInputs.cache
+D:\TSG\HybridEncryption\EncryptionProgramNET\obj\Debug\netcoreapp3.1\EncryptionProgramNET.dll
+D:\TSG\HybridEncryption\EncryptionProgramNET\obj\Debug\netcoreapp3.1\EncryptionProgramNET.pdb
+D:\TSG\HybridEncryption\EncryptionProgramNET\obj\Debug\netcoreapp3.1\EncryptionProgramNET.genruntimeconfig.cache
