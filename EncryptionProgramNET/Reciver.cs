@@ -14,7 +14,12 @@ namespace EncryptionProgramNET
 
         public Reciver()
         {
+
+            // Create a new isntance of the RSACryptoServiceProvider class
+            // And automatically create a new key-pair.
             rsa = new RSACryptoServiceProvider();
+
+            // You must pass false in order to export the public key for verficiation
             publicKey = rsa.ExportParameters(false);
         }
 
@@ -28,16 +33,21 @@ namespace EncryptionProgramNET
             try
             {
           
+                //Separate the package in their 2 distinct form
                 byte[] deconKeyAndData = message.Take(encryptDataLength).ToArray();
                 byte[] deconSymetricKeyData = message.Skip(encryptDataLength).ToArray();
 
+                //decrypts the symetric key using the private key
                 deconSymetricKeyData = rsa.Decrypt(deconSymetricKeyData, true);
-
+                
+                //decrypts the boundle using the symetric key
                 deconKeyAndData = DecryptCipher(IV, deconKeyAndData, deconSymetricKeyData);
 
+                //Separates the initial mesage in the hased and the original message
                 byte[] deconSignedData = deconKeyAndData.Take(signedDataLength).ToArray();
                 byte[] deconOriginalData = deconKeyAndData.Skip(signedDataLength).ToArray();
 
+                //verify the signed message 
                 if (VerifySignedHash(deconOriginalData, deconSignedData, transmiterPublicKey))
                 {
                     Console.WriteLine("The data was verified.");
@@ -55,10 +65,14 @@ namespace EncryptionProgramNET
 
         private static byte[] DecryptCipher(byte[] IV, byte[] encryptCipherText, byte[] key)
         {
+            //creates a new symetric service
             Aes cipher = Aes.Create();
+            
             cipher.Padding = PaddingMode.ISO10126;
+            //Using the IV and the decrypted key
             cipher.IV = IV;
             cipher.Key = key;
+            //decrypt the message
             ICryptoTransform decryptTransform = cipher.CreateDecryptor();
             return decryptTransform.TransformFinalBlock(encryptCipherText, 0, encryptCipherText.Length);
 
